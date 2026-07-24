@@ -122,6 +122,9 @@ async def voice_webhook(file: UploadFile = File(...)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/ping")
+async def ping():
+    return {"status": "awake"}
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_frontend():
